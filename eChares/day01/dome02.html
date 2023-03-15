@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width: 700px; height: 500px;"></div>
+</body>
+<script>
+    <!--    基于准备好的div盒子，初始化echarts图表-->
+    var myChart = echarts.init(document.getElementById("main"))
+    //对echarts图表的配置
+    var option = {
+        //图表弹窗组件
+        tooltip: {
+            trigger: 'axis',
+            //设置坐标轴指示器，坐标触发才有效。
+            axisPointer: {
+                //设置坐标轴默认直线，可选为：lire，shadow
+                type: 'shadow'
+            }
+        },
+        //图表的标题
+        title: {},
+        //图表图例
+        legend: {
+            data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎', '百度', '谷歌', '必应', '其他']
+        },
+        //图表显示的工具箱
+        toolbox: {
+            show: true,
+            //工具栏icon的布局朝向
+            orient: 'vertical',
+            x: 'right',
+            y: 'center',
+            //功能显示
+            feature: {
+                //辅助线开关
+                mark: {
+                    show: true
+                },
+                //数据视图工具，展现当前图表所用的工具
+                dataView: {
+                    show: true,
+                    //是否可以编辑(只读)
+                    readOnly: false
+                },
+                //动态类型切换
+                magicType: {
+                    show: true,
+                    //启用的类型。line'（切换为折线图）, 'bar'（切换为柱状图）, 'stack'（切换为堆叠模式）, 'tiled'（切换为平铺模式）
+                    type: ['line', 'bar', 'stack', 'tiled']
+                },
+                //配置项还原
+                restore: {
+                    show: true
+                },
+                //保存图片
+                saveAsImage: {
+                    show: true
+                }
+            }
+        },
+        xAxis: [
+            {
+                type: 'category',
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        yAxis: [
+            {type: 'value'}
+        ],
+        series: [
+            {
+                name: '直接访问',
+                type: 'bar',
+                data: [320, 332, 301, 334, 390, 330, 320],
+            },
+            {
+                name: '邮件营销',
+                type: 'bar',
+                stack: '广告',
+                data: [120, 132, 101, 134, 90, 230, 210]
+            },
+            {
+                name: '联盟广告',
+                type: 'bar',
+                stack: '广告',
+                data: [220, 182, 191, 234, 290, 330, 310]
+            },
+            {
+                name: '视频广告',
+                type: 'bar',
+                stack: '广告',
+                data: [150, 232, 202, 154, 190, 330, 310]
+            },
+            {
+                name: '搜索引擎',
+                type: 'bar',
+                data: [862, 1018, 964, 1026, 1679, 1600, 1570]
+            },
+            {
+                name: '百度',
+                type: 'bar',
+                with: 5,
+                stack: '搜索引擎',
+                data: [620, 732, 701, 734, 1090, 1130, 1120]
+            },
+            {
+                name: '谷歌',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [120, 132, 101, 134, 290, 230, 220]
+            },
+            {
+                name: '必应',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [60, 72, 71, 74, 190, 130, 110]
+            },
+            {
+                name: '其他',
+                type: 'bar',
+                stack: '搜索引擎',
+                data: [62, 82, 91, 84, 109, 110, 120]
+            },
+        ],
+
+    };
+    myChart.setOption(option);
+
+
+</script>
+</html>
