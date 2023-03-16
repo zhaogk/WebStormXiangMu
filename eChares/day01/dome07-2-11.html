@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="js/echarts.min.js"></script>
+</head>
+
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var option;
+    option = {
+        backgroundColor:'#eee',
+        title:{
+            text:"某都市的人流统计",
+            textStyle:{
+                //设置主标题文字提示
+                color:'red'
+            },
+            x:'center',
+
+        },
+        //提示框组件
+        tooltip:{
+            trigger:'axis'
+        },
+        legend:{
+            data:['人流量'],
+            left:'right'
+        },
+        xAxis:{
+            type:'category',
+            data:['周一','周二','周三','周四','周五','周六','周日',]
+        },
+        yAxis:{
+            type: 'value'
+        },
+        series:[
+            {
+                name:'人流量',
+                type:'line',
+                data:[80,125,160,140,200,245,155],
+                smooth:true
+            }
+        ]
+    };
+
+    myChart.setOption(option);
+</script>
+</body>
+
+</html>

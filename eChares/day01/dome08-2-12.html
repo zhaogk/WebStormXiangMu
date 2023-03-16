@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ECharts</title>
+  <!-- 引入 echarts.js -->
+  <script src="js/echarts.min.js"></script>
+</head>
+
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+  // 基于准备好的dom，初始化echarts实例
+  var myChart = echarts.init(document.getElementById('main'));
+  var option;
+  option = {
+    title:{
+      text:'这是主标题',
+      textStyle:{
+        color:'#fff',
+      },
+      left:20,
+      top:3
+    },
+    tooltip:{
+      show:true,
+      trigger:'axis',
+    },
+    legend:{
+      data:['手机','冰箱','空调','电视','其他'],
+      left:160,
+      top:3
+    },
+    toolbox: {
+      show: true,
+      //工具栏icon的布局朝向
+      orient: 'vertical',
+      //功能显示
+      feature: {
+        //辅助线开关
+        mark: {
+          show: true
+        },
+        //数据视图工具，展现当前图表所用的工具
+        dataView: {
+          show: true,
+          //是否可以编辑(只读)
+          readOnly: false
+        },
+        //动态类型切换
+        magicType: {
+          show: true,
+          //启用的类型。line'（切换为折线图）, 'bar'（切换为柱状图）, 'stack'（切换为堆叠模式）, 'tiled'（切换为平铺模式）
+          type: ['line', 'bar', 'stack', 'tiled']
+        },
+        //配置项还原
+        restore: {
+          show: true
+        },
+        //保存图片
+        saveAsImage: {
+          show: true
+        }
+      },
+      top:52,
+      left:550
+    },
+    calculable:true,
+    xAxis: [
+      {
+        type: 'category',
+        boundaryGap:false,
+        data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+      }
+    ],
+    yAxis: [
+      {type: 'value'}
+    ],
+    series: [
+      {
+        name: '手机',      // 序列名称
+        type: 'line',      // 类型
+        stack:'总量',
+        color:'rgb(0,0,0)',
+        itemStyle: {    // 图形的形状
+          normStyle:{
+            areaStyle:{
+              type:'default',
+              color:'rgb(174,221,139)'
+            }
+          },
+        },
+        data: [434, 345, 456,  222, 333, 444, 432]
+      },
+      {
+        name: '冰箱',      // 序列名称
+        type: 'line',      // 类型
+        stack:'总量',
+        color:'blue',
+        itemStyle: {    // 图形的形状
+          normStyle:{
+            areaStyle:{
+              type:'default',
+              color:'rgb(107,194,53)'
+            }
+          },
+        },
+        data: [420, 282, 391, 344, 390,  530, 410]
+      },
+      {
+        name: '空调',      // 序列名称
+        type: 'line',      // 类型
+        stack:'总量',
+        color:'red',
+        itemStyle: {    // 图形的形状
+          normStyle:{
+            areaStyle:{
+              type:'default',
+              color:'rgb(6,128,67)'
+            }
+          },
+        },
+        data: [350, 332, 331, 334, 390,  320, 340]
+      },
+      {
+        name: '电视',      // 序列名称
+        type: 'line',      // 类型
+        stack:'总量',
+        color:'green',
+        itemStyle: {    // 图形的形状
+          normStyle:{
+            areaStyle:{
+              type:'default',
+              color:'grey'
+            }
+          },
+        },
+        data: [420, 222, 333, 442, 230, 430, 430]
+      },
+      {
+        name: '其他',      // 序列名称
+        type: 'line',      // 类型
+        stack:'总量',
+        color:'#FA8072',
+        itemStyle: {    // 图形的形状
+          normStyle:{
+            areaStyle:{
+              type:'default',
+              color:'rgb(38,157,128)'
+            }
+          },
+        },
+        data: [330, 442, 432,  555, 456, 666, 877]
+      },
+
+    ]
+
+  };
+
+  myChart.setOption(option);
+</script>
+</body>
+
+</html>
