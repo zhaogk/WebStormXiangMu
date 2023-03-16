@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!--引入ECharts脚本-->
+  <script src="../js/echarts.min.js"></script>
+</head>
+
+<body>
+<!---为ECharts准备一个具备大小（宽高）的DOM-->
+<div id="main" style="width: 600px; height: 400px"></div>
+<script type="text/javascript">
+  //基于准备好的DOM，初始化ECharts图表
+  var myChart = echarts.init(document.getElementById("main"));
+  //指定图表的配置项和数据
+  var option = {
+    title: {  //配置标题组件
+      text: '会员入会渠道分布情况',  //设置主标题
+      subtext: '',  //设置次标题
+      left: 'center'  //设置主次标题都左右居中
+    },
+    tooltip: {  //配置提示框组件
+      trigger: 'item',
+      formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {  //配置图例组件
+      orient: 'vertical',  //设置垂直排列
+      left: 62,  //设置图例左边距
+      top: 22,  //设置图例顶边距
+      data: ['自愿', '微信推广', '团购促销', '节日活动']
+    },
+    toolbox: {  //配置工具箱组件
+      show: true,  //设置工具箱组件是否显示
+      left: 444,  //设置工具箱左边距
+      top: 28,  //设置工具箱顶边距
+      feature: {
+        mark: { show: true },
+        dataView: { show: true, readOnly: false },
+        magicType: {
+          show: true,
+          type: ['pie', 'funnel'],
+          option: {
+            funnel: {
+              x: '25%',
+              width: '50%',
+              funnelAlign: 'left',
+              max: 1548
+            }
+          }
+        },
+        restore: { show: true },
+        saveAsImage: { show: true }
+      }
+    },
+    calculable: true,
+    series: [  //配置数据系列组件
+      {
+        name: '入会方式',
+        type: 'pie',
+        radius : '66%',  //设置半径
+        //radius: ['45%', '75%'],
+        center: ['58%', '55%'],  //设置圆心
+        clockWise: true,
+        data: [  //设置数据的具体值
+          { value: 5, name: '自愿' },
+          { value: 2, name: '微信推广' },
+          { value: 3, name: '团购促销' },
+          { value: 4, name: '节日活动' }
+        ]
+      }
+    ]
+  };
+  //使用刚指定的配置项和数据显示图表
+  myChart.setOption(option);
+</script>
+</body>
+
+</html>
