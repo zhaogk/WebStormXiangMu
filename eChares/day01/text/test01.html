@@ -45,19 +45,31 @@
         yAxis: [
             {
                 type: 'category',
-                data: ['自愿', '微信推广', '团购促销', '节日活动'],
+                data: ['全部入会方式','自愿', '节日活动' , '团购促销','微信推广'],
             },
         ],
         series: [
             {
+                name: '20-29',
+                type: 'bar',
+                stack:'年龄',
+                data: [14,2,4,2,2]
+            },
+            {
+                name: '深圳',
+                type: 'bar',
+                stack:'城市',
+                data: [1,0,1]
+            },
+            {
                 name: '男',
                 type: 'bar',
-                data: [2, 0, 1, 2],
+                data: [5,2, 2,1, 0],
             },
             {
                 name: '女',
                 type: 'bar',
-                data: [3, 2, 2, 2],
+                data: [9,3, 2, 2, 2],
             },
         ],
     };
